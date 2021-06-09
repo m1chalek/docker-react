@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t m1chalek/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true m1chalek/docker-react npm run test -- -- coverage
